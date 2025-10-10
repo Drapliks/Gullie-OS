@@ -5,6 +5,7 @@ import psutil
 import time
 from datetime import datetime
 import os
+import sys
 
 versionOS = 1.6
 nts1 = str()
@@ -20,7 +21,7 @@ def loading():
     print("Loading...")
     print(Fore.WHITE)
 def clear():
-    os.system('cls')
+    os.system('cls' if os.name == 'nt' else 'clear')
 from colorama import Fore, Back, Style
 while endless == 0:
     loading()
@@ -250,7 +251,7 @@ while endless == 0:
     elif programm == "5":
         loading()
         time.sleep(2)
-        exit()
+        sys.exit()
 
 
 
