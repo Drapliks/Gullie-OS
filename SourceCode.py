@@ -5,6 +5,7 @@ import psutil
 import time
 from datetime import datetime
 import os
+import sys
 
 versionOS = 1.6
 nts1 = str()
@@ -15,13 +16,20 @@ nts5 = str()
 
 endless = 0
 start_time = time.time()
+
+
 def loading():
     print(Fore.GREEN)
     print("Loading...")
     print(Fore.WHITE)
+
+
 def clear():
-    os.system('cls')
+    os.system("cls" if os.name == "nt" else "clear")
+
+
 from colorama import Fore, Back, Style
+
 while endless == 0:
     loading()
     time.sleep(2)
@@ -43,12 +51,7 @@ while endless == 0:
     time.sleep(2)
     clear()
 
-
-
-
-
-
-    #Calculator
+    # Calculator
     if programm == "1":
         print("Welcome to " + Fore.BLUE + "Gullie Calculator!")
         print(Fore.WHITE)
@@ -86,15 +89,13 @@ while endless == 0:
             c = a * b
             loading()
             time.sleep(2)
-            print("Result: "+str(c))
+            print("Result: " + str(c))
         else:
             print(Fore.RED)
             print("ERROR!")
         input()
 
-
-
-    #Game Launcher
+    # Game Launcher
     elif programm == "2":
         print("Welcome to " + Fore.BLUE + "Gullie Game Launcher!")
         print(Fore.WHITE)
@@ -119,12 +120,12 @@ while endless == 0:
                 loading()
                 time.sleep(2)
                 print("The number was invented")
-                num = random.randint(1,10)
+                num = random.randint(1, 10)
                 plrnum = float(input("Your answer: "))
                 if plrnum == num:
-                    print("You guessed the number("+str(num)+")")
+                    print("You guessed the number(" + str(num) + ")")
                 else:
-                    print("You did not guess the number "+str(num))
+                    print("You did not guess the number " + str(num))
             elif yon >= str(3):
                 print(Fore.RED)
                 print("ERROR!")
@@ -134,7 +135,9 @@ while endless == 0:
             clear()
             print("Welcome to " + Fore.BLUE + "Come up with a number!")
             print(Fore.WHITE)
-            print("Your task is to come up with a number up to 10, and mine is to guess this number.")
+            print(
+                "Your task is to come up with a number up to 10, and mine is to guess this number."
+            )
             print(Fore.RED)
             print("Start?")
             print(Fore.WHITE + "1.Yes")
@@ -144,11 +147,14 @@ while endless == 0:
                 plrnumc = input("Your number:")
                 loading()
                 time.sleep(2)
-                numc = random.randint(1,10)
+                numc = random.randint(1, 10)
                 if plrnumc == numc:
-                    print("Hooray, I guessed the number "+str(numc))
+                    print("Hooray, I guessed the number " + str(numc))
                 else:
-                    print("It's a pity I didn't guess the number, I thought it was: "+str(numc))
+                    print(
+                        "It's a pity I didn't guess the number, I thought it was: "
+                        + str(numc)
+                    )
             elif yon2 >= str(3):
                 print(Fore.RED)
                 print("ERROR!")
@@ -157,33 +163,27 @@ while endless == 0:
             print("ERROR!")
         input()
 
-
-
-
-
-    #info
+    # info
     elif programm == "3":
-        hostname = platform.node(),
-        numofcor = psutil.cpu_count(logical=False),
+        hostname = (platform.node(),)
+        numofcor = (psutil.cpu_count(logical=False),)
         architecture = platform.architecture()
-        processor = platform.processor(),
-        RAM = round(psutil.virtual_memory().total / (1024 ** 3), 2),
+        processor = (platform.processor(),)
+        RAM = (round(psutil.virtual_memory().total / (1024**3), 2),)
         seanstimenr = time.time() - start_time
         seanstime_rounded = round(seanstimenr)
-        print(f"//////////////////{Fore.BLUE} G U L L I E    I N F O {Fore.WHITE}//////////////////")
+        print(
+            f"//////////////////{Fore.BLUE} G U L L I E    I N F O {Fore.WHITE}//////////////////"
+        )
         print("OS: Gullie")
-        print("OS Version: " +str(versionOS))
-        print("Host name: " +str(hostname))
+        print("OS Version: " + str(versionOS))
+        print("Host name: " + str(hostname))
         print("Architecture: " + str(architecture))
-        print("Processor: " +str(processor))
+        print("Processor: " + str(processor))
         print("Number of cores: " + str(numofcor))
-        print("RAM: " +str(RAM))
+        print("RAM: " + str(RAM))
         print(f"Session duration: {seanstime_rounded} seconds")
         input()
-
-
-
-
 
     # Notes
     elif programm == "4":
@@ -199,7 +199,7 @@ while endless == 0:
             time.sleep(2)
             clear()
             print("Notes:")
-            print("1."+nts1)
+            print("1." + nts1)
             print("2." + nts2)
             print("3." + nts3)
             print("4." + nts4)
@@ -239,25 +239,15 @@ while endless == 0:
             print("The notes are cleaned")
         input()
 
-
-
-
-
-
-
-
-    #PowerOff
+    # PowerOff
     elif programm == "5":
         loading()
         time.sleep(2)
-        exit()
-
-
-
-
+        sys.exit()
 
     else:
         print(Fore.RED)
         print("ERROR!")
         time.sleep(1)
         clear()
+
